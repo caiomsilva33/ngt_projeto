@@ -1,0 +1,38 @@
+# .github/workflows/main.yml
+
+# Nome do nosso workflow
+name: Teste da API da Academia
+
+# Quando este workflow será executado
+on:
+  push:
+    branches:
+      - main # Executa toda vez que houver um 'push' para a branch principal
+
+# Os "jobs" são as tarefas que serão executadas
+jobs:
+  test-backend:
+    runs-on: ubuntu-latest # O sistema operacional que o GitHub vai usar
+
+    steps:
+      # Passo 1: Fazer o checkout do código
+      - name: Checkout do código
+        uses: actions/checkout@v2
+
+      # Passo 2: Configurar o ambiente Python
+      - name: Configurar Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10' # Versão do Python a ser usada
+
+      # Passo 3: Instalar as dependências
+      - name: Instalar dependências
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt # Vamos criar este arquivo depois
+
+      # Passo 4: Executar os testes
+      - name: Executar testes da API
+        run: |
+          echo "Ainda não temos testes. Este é um passo placeholder."
+          echo "No futuro, este comando rodará algo como 'pytest'."
